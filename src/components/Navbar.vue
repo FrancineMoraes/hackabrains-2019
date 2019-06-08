@@ -1,0 +1,13 @@
+<template>
+	<nav class="navbar" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand is-centered">
+			<router-link :to="{ name: 'Home' }" class="navbar-item">Hackabrains</router-link>
+		</div>
+	</nav>
+</template>
+
+<script>
+	export default{
+		name: 'Navbar'
+	}
+</script>
