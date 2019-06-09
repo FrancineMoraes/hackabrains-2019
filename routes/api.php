@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('login', 'Auth\LoginController@login');
+Route::post('user/store', 'UserController@store');
 //Route::post('', 'Auth\LoginController@login');
 
 Route::group(['middleware' => ['web']], function () {
