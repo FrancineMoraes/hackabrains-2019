@@ -67,6 +67,8 @@ export default {
 <style lang="stylus" scoped>
 .register
   text-align center
+  background-color #477cb2
+  color: #fff
   h1
     font-size 1.5rem
     margin 16px auto 32px

@@ -1,5 +1,5 @@
 <template>
-<section class="login container">
+<section class="login">
   <Logo />
   <h1>Login</h1>
   <form class="login-form" @submit.prevent="login">
@@ -64,7 +64,7 @@ export default {
 .login
   text-align center
   background-color #477cb2
-  color white
+  color #fff
   padding-bottom 30px
   h1
     font-size 1.5rem
