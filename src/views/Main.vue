@@ -206,7 +206,8 @@ export default {
         name: null,
         description: null,
         date_build: null,
-        position: null
+        position: null,
+        isGood: true
       }
 
     }
