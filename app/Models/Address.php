@@ -12,7 +12,7 @@ class Address extends Model
     
     public function mapping()
     {
-        return $this->hasOne('App\Models\Address');
+        return $this->hasOne('App\Models\Address', 'address_id');
     }
 
     public function locale()

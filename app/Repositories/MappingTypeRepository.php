@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 
 use Illuminate\Http\Request;
 use App\Models\MappingType;
-
 class MappingTypeRepository
 {
     /**
@@ -16,12 +15,13 @@ class MappingTypeRepository
     {
         try
         {
-            $type=Post::all();
-            return $type->toJson(;)
+            $mappings_types = MappingType::get();
+
+            return $mappings_types->toJson();
         }
-        catch
+        catch(Exception $e)
         {
-            
+            return response()->json(['Erro', 500]);
         }
 
     }

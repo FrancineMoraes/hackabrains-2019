@@ -14,6 +14,6 @@ class Locale extends Model
 
     public function address()
     {
-        return $this->hasOne('App\Models\Address');
+        return $this->hasOne('App\Models\Address', 'locale_id');
     }
 }

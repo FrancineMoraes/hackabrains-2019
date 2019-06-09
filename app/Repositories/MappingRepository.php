@@ -40,12 +40,28 @@ class MappingRepository
         try
         {
             $locale = Locale::create($request->all());
-            $address = $locale->address()->create($request->all());
-            dd($address);
 
-            return response()->json(['Usuário registrado com sucesso!', 200]);
+            $address = $locale->address()->create([
+                'street' => $request->street,
+                'number' =>  $request->number,
+                'district' =>  $request->district,
+                'city' =>  $request->city,
+                'state' =>  $request->state,
+                'locale_id' =>  $locale->id
+            ]);
+            
+            $mapping = Mapping::create([
+                'users_id' => $request->user_id,
+                'mapping_types_id' => $request->mapping_type_id,
+                'address_id' => $address->id
+            ]);
+                
+
+            $mappings = Mapping::with('mapping_types', 'address')->get();
+
+            return $mappings->toJson();
         }
-        catch(Excpetion $e)
+        catch(Exception $e)
         {
             return response()->json(['Erro', 500]);
         }
