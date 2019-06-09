@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::post('user/store', 'UserController@store');
 Route::post('mapping/store', 'MappingController@store');
+Route::post('comment/store', 'CommentController@store');
+
 Route::get('mapping_types/index', 'MappingTypeController@index');
 //Route::post('', 'Auth\LoginController@login');
 

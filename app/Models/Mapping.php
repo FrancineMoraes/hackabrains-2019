@@ -23,4 +23,9 @@ class Mapping extends Model
     {
         return $this->belongsTo('App\Models\MappingType', 'mapping_types_id');
     }
+
+    public function mappins()
+    {
+        return $this->hasMany('App\Models\Mapping');
+    }
 }

@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Mapping',  'users_id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment', 'users_id');
+    }
+
+    public function evaluations()
+    {
+        return $this->hasMany('App\Models\Evaluation', 'users_id');
+    }
 }
