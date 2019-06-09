@@ -23,29 +23,24 @@ class CreateMappingTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('users_id');
-            $table->integer('mapping_types_id');
-            $table->integer('address_id');
+            $table->integer('users_id')->unsigned();
+            $table->integer('mapping_types_id')->unsigned();
+            $table->integer('address_id')->unsigned();
 
-            $table->index(["mapping_types_id"], 'fk_mapping_mapping_types1_idx');
-
-            $table->index(["address_id"], 'fk_mapping_address1_idx');
-
-            $table->index(["users_id"], 'fk_mapping_users1_idx');
             $table->timestamps();
 
 
-            $table->foreign('mapping_types_id', 'fk_mapping_mapping_types1_idx')
+            $table->foreign('mapping_types_id')
                 ->references('id')->on('mapping_types')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('address_id', 'fk_mapping_address1_idx')
+            $table->foreign('address_id')
                 ->references('id')->on('address')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('users_id', 'fk_mapping_users1_idx')
+            $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');

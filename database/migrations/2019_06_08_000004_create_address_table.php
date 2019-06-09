@@ -28,13 +28,12 @@ class CreateAddressTable extends Migration
             $table->string('district', 191);
             $table->string('city', 191);
             $table->string('state', 191);
-            $table->integer('locale_id');
+            $table->integer('locale_id')->unsigned();
 
-            $table->index(["locale_id"], 'fk_address_locale1_idx');
             $table->timestamps();
 
 
-            $table->foreign('locale_id', 'fk_address_locale1_idx')
+            $table->foreign('locale_id')
                 ->references('id')->on('locale')
                 ->onDelete('no action')
                 ->onUpdate('no action');

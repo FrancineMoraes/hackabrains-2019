@@ -24,21 +24,18 @@ class CreateEvaluationTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->enum('evaluation', ['like', 'dislike']);
-            $table->integer('mapping_id');
-            $table->integer('users_id');
+            $table->integer('mapping_id')->unsigned();
+            $table->integer('users_id')->unsigned();
 
-            $table->index(["mapping_id"], 'fk_evaluation_mapping1_idx');
-
-            $table->index(["users_id"], 'fk_evaluation_users1_idx');
             $table->timestamps();
 
 
-            $table->foreign('mapping_id', 'fk_evaluation_mapping1_idx')
+            $table->foreign('mapping_id')
                 ->references('id')->on('mapping')
                 ->onDelete('no action')
                 ->onUpdate('no action');
 
-            $table->foreign('users_id', 'fk_evaluation_users1_idx')
+            $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
