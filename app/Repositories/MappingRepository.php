@@ -39,7 +39,11 @@ class MappingRepository
     {
         try
         {
-            $locale = Locale::create($request->all());
+            
+            $locale = Locale::create([
+                'longitude' => $request->longitude,
+                'latitude' => $request->longitude,
+            ]);
 
             $address = $locale->address()->create([
                 'street' => $request->street,
@@ -59,7 +63,7 @@ class MappingRepository
 
             $mappings = Mapping::with('mapping_types', 'address')->get();
 
-            return $mappings->toJson();
+            return $mappings;
         }
         catch(Exception $e)
         {
