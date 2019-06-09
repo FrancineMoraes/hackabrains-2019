@@ -1,9 +1,22 @@
 <template>
 	<div>
-		<div id="map">
+		<div class="map-container">
+			
+			<form @submit.prevent="insertMarker" class="search-box">
+				<b-field title="Ocorrência">	
+					<input v-model="newMarker.description" type="text" class="input" placeholder="Nome da ocorrência">
+				</b-field>
+
+				<input type="text" class="input" ref="searchInput">
+				<div class="has-text-right">
+					<button :disabled="disabled" class="button is-primary">Salvar</button>
+				</div>
+			</form>
+
 			<GmapMap
+			  id="map"
 			  :center="map.center"
-			  :zoom="15"
+			  :zoom="16"
 			  map-type-id="terrain"
 			  style="width: 100%; height: 90vh"
 			  :options="{styles: styles}"
@@ -23,6 +36,7 @@
 		name: 'Main',
 		data(){
 			return{
+				disabled: true,
 				map: {
 					center: {
 						lat: -31.7654,
@@ -212,12 +226,40 @@
 				            }
 				        ]
 				    }
-				]
+				],
+				newMarker: {
+					name: null,
+					description: null,
+					date_build: null,
+					position: null
+				}
 				
 			}
 		},
 		created(){
 			this.initMap()
+
+			this.$gmapApiPromiseLazy().then(() => { 
+				let input = this.$refs.searchInput
+				let searchBox = new google.maps.places.SearchBox(input)
+
+				searchBox.addListener('places_changed', () => {
+          			let places = searchBox.getPlaces()
+          			this.disabled = false
+          			if(places.length > 0){
+          				let address = places[0].formatted_address
+          				let latitude = places[0].geometry.location.lat()
+          				let longitude = places[0].geometry.location.lng()
+
+          				this.newMarker.name = address
+          				this.newMarker.date_build = `${ new Date }`
+          				this.newMarker.position = {
+          					lat: latitude,
+          					lng: longitude
+          				}
+          			}
+          		})
+			})
 		},
 		methods: {
 			initMap(){
@@ -230,11 +272,40 @@
 						this.map.center = pos
 					})
 				}
-			}	
+			},
+
+			insertMarker(){
+				console.log(this.newMarker)
+
+				this.markers.push({
+					name: this.newMarker.name,
+					description: this.newMarker.description,
+					date_build: this.newMarker.date_build,
+					position: this.newMarker.position
+				})
+
+				/*{
+					name: null,
+					description: null,
+					date_build: null,
+					position: null
+				}*/
+			}
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
+	.map-container
+		position relative
+		background white
 		
+		.search-box
+			padding 1rem
+			@media screen and (min-width: 960px)
+				padding 1rem 33%
+
+		.search-box
+			.input
+				margin-bottom 1rem	
 </style>

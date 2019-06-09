@@ -9,6 +9,7 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
+import VueGmaps from 'vue-gmaps'
 
 Vue.use(VueSweetalert2)
 Vue.use(Buefy)
