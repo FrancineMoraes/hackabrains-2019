@@ -3,9 +3,11 @@
 namespace App\Repositories;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Models\Mapping;
+use App\Models\Address;
+use App\Models\Locale;
 
-class UserRepository
+class MappingRepository
 {
     /**
      * Display a listing of the resource.
@@ -37,11 +39,13 @@ class UserRepository
     {
         try
         {
-            $user = User::create($request->all());
+            $locale = Locale::create($request->all());
+            $address = $locale->address()->create($request->all());
+            dd($address);
 
             return response()->json(['Usuário registrado com sucesso!', 200]);
         }
-        catch(Exception $e)
+        catch(Excpetion $e)
         {
             return response()->json(['Erro', 500]);
         }

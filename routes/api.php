@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::post('user/store', 'UserController@store');
+Route::post('mapping/store', 'MappingController@store');
 //Route::post('', 'Auth\LoginController@login');
 
 Route::group(['middleware' => ['web']], function () {

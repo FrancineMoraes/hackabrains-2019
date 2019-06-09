@@ -1,12 +1,20 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Repositories\MappingRepository;
 
-class UserRepository
+class MappingController extends Controller
 {
+
+    private $mapping;
+
+    public function __construct()
+    {
+        $this->mapping = new MappingRepository();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class UserRepository
      */
     public function index()
     {
-       
+        //
     }
 
     /**
@@ -35,16 +43,7 @@ class UserRepository
      */
     public function store(Request $request)
     {
-        try
-        {
-            $user = User::create($request->all());
-
-            return response()->json(['Usuário registrado com sucesso!', 200]);
-        }
-        catch(Exception $e)
-        {
-            return response()->json(['Erro', 500]);
-        }
+        return $this->mapping->store($request);
     }
 
     /**
