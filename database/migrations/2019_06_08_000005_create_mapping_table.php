@@ -44,6 +44,7 @@ class CreateMappingTable extends Migration
                 ->references('id')->on('users')
                 ->onDelete('no action')
                 ->onUpdate('no action');
+                
         });
     }
 
