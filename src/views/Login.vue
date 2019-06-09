@@ -66,6 +66,7 @@ export default {
   background-color #477cb2
   color #fff
   padding-bottom 30px
+  min-height 90vh
   h1
     font-size 1.5rem
     margin 16px auto 32px

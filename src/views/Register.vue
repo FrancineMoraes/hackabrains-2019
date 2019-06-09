@@ -10,7 +10,7 @@
         </b-field>
 
         <b-field label="Email">
-            <b-input v-model="user.mail" type="email"</b-input>
+            <b-input v-model="user.mail" type="email"></b-input>
         </b-field>
 
         <b-field label="Senha">
@@ -67,6 +67,7 @@ export default {
   text-align center
   background-color #477cb2
   color: #fff
+  min-height 90vh
   h1
     font-size 1.5rem
     margin 16px auto 32px

@@ -29,9 +29,21 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+  .navbar
+    background #477cb2
+    color white
+    .navbar-item
+      transition 200ms ease all
+      color white
+      &:hover
+        background lighten(#477cb2, 20%)
+  .navbar-menu
+    background #477cb2
+    text-align center        
 	.navbar-menu.is-active
 	    position absolute
 	    width 100%
 	    text-align center
+      background-color #477cb2 !important 
 
 </style>

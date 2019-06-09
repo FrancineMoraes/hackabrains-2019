@@ -2,7 +2,7 @@
 <div>
   <div class="map-container">
 
-    <form @submit.prevent="insertMarker" class="search-box">
+    <form @submit.prevent="insertMarker" :class=" isVisible ? 'search-box active' : 'search-box' ">
       <b-field title="Ocorrência">
         <input v-model="newMarker.description" type="text" class="input" placeholder="Nome da ocorrência">
       </b-field>
@@ -17,6 +17,18 @@
       <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position">
       </gmap-marker>
     </GmapMap>
+
+    <nav class="bottom-menu">
+      <button class="button rota">
+        <p>Rota</p>
+        <v-icon name="caret-square-right" />
+      </button>
+      
+      <button @click.prevent="openInsert" class="button ocorrencia">
+        <p>Ocorrência</p>
+        <v-icon name="exclamation" />
+      </button>
+    </nav>
   </div>
 </div>
 </template>
@@ -27,6 +39,7 @@ export default {
   data() {
     return {
       disabled: true,
+      isVisible: false,
       map: {
         center: {
           lat: -31.7654,
@@ -259,30 +272,61 @@ export default {
         date_build: this.newMarker.date_build,
         position: this.newMarker.position
       })
+    },
 
-      /*{
-      	name: null,
-      	description: null,
-      	date_build: null,
-      	position: null
-      }*/
-    }
+    openInsert(){
+      this.isVisible = !this.isVisible
+    }    
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-	.map-container
-		position relative
-		background white
+	.map-container{ 
+		position: relative;
+		background: white;
 
-		.search-box
-			padding 1rem
-			@media screen and (min-width: 960px)
-				padding 1rem 33%
-
-		.search-box
-			.input
-				margin-bottom 1rem
+		.search-box{
+      display: none; 
+      &.active{
+        display: block;
+        animation: move 1s;
+      } 
+			@media screen and (min-width: 960px){
+				padding: 1rem 33%;
+      }
+    }
+		.search-box{
+			.input{
+				margin-bottom: 1rem;
+      }
+    }
+    
+    .bottom-menu{
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      
+      @media screen and (min-width: 960px){
+        width: 25%;
+      }
+      
+      .button{
+        flex: 1;
+        padding: 1rem;
+        text-align: center;
+        background: #477cb2;
+        color: white;
+        min-height: 50px;
+        padding-bottom: 1.5rem;
+        
+        .fa-icon{
+          font-size: 2rem;
+          margin-left 1rem;
+        }
+      }
+    }
+  }    
 </style>
->>>>>>> 5027cb035f9fdb42192281627ced0f70507440d2
