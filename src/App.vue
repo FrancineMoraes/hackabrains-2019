@@ -1,19 +1,19 @@
 <template>
-  <div id="app">
-    <Navbar />
-    <router-view/>
-  </div>
+<div id="app">
+  <Navbar />
+  <router-view />
+</div>
 </template>
 
 <script>
-  import Navbar from '@/components/Navbar'
+import Navbar from '@/components/Navbar'
 
-  export default{
-    name: 'Home', 
-    components: {
-      Navbar
-    }
+export default {
+  name: 'Home',
+  components: {
+    Navbar
   }
+}
 </script>
 
 <style lang="stylus">
