@@ -39,11 +39,11 @@ export default {
         background lighten(#477cb2, 20%)
   .navbar-menu
     background #477cb2
-    text-align center        
+    text-align center
 	.navbar-menu.is-active
 	    position absolute
 	    width 100%
 	    text-align center
-      background-color #477cb2 !important 
+      background-color #477cb2 !important
 
 </style>
