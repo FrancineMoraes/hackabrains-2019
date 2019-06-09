@@ -16,13 +16,9 @@ use Illuminate\Http\Request;
 Route::post('user/store', 'UserController@store');
 Route::post('mapping/store', 'MappingController@store');
 Route::post('comment/store', 'CommentController@store');
+Route::post('evaluation/store', 'EvaluationController@store');
 
 Route::get('mapping_types/index', 'MappingTypeController@index');
-//Route::post('', 'Auth\LoginController@login');
-
-Route::group(['middleware' => ['web']], function () {
-    // your routes here
-});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

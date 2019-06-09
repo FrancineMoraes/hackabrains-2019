@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluation extends Model
 {
-    protected $fillable = ['evaluation'];
+    protected $fillable = ['evaluation', 'users_id', 'mapping_id'];
 
     protected $table = 'evaluation';
 
@@ -17,7 +17,7 @@ class Evaluation extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'users_id');
     }
     
 }
