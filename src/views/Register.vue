@@ -10,9 +10,7 @@
         </b-field>
 
         <b-field label="Email">
-            <b-input v-model="user.mail" type="email"
-                maxlength="30">
-            </b-input>
+            <b-input v-model="user.mail" type="email"</b-input>
         </b-field>
 
         <b-field label="Senha">

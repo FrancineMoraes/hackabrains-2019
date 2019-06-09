@@ -1,5 +1,6 @@
 <template>
 <div id="app">
+  <Loader :isActive='true' />
   <Navbar />
   <router-view />
 </div>
@@ -7,11 +8,13 @@
 
 <script>
 import Navbar from '@/components/Navbar'
+import Loader from '@/components/Loader'
 
 export default {
   name: 'Home',
   components: {
-    Navbar
+    Navbar,
+    Loader
   }
 }
 </script>
