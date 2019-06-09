@@ -40,6 +40,8 @@ class MappingRepository
         try
         {
 
+            return $request;
+            
             $locale = Locale::create([
                 'longitude' => $request->longitude,
                 'latitude' => $request->latitude,
